@@ -58,11 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
         mStartDateCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                mStartDateTxt = getString(R.string.txtDateStart) + i+"-"+i1+"-"+i2;
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
+                mStartDateTxt = getString(R.string.txtDateStartFrmt, year,month,day);
                 mChooseStartDate.setText( mStartDateTxt);
                 GregorianCalendar gregorianCalendar = new GregorianCalendar();
-                gregorianCalendar.set(i, i1, i2);
+                gregorianCalendar.set(year,month,day);
                 mStartDate = gregorianCalendar.getTimeInMillis();
                 calendarView.setVisibility(View.GONE);
             }
@@ -70,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
         mEndtDateCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                mEndDateTxt = getString(R.string.txtDateEnd) + i+"-"+i1+"-"+i2;
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
+                mEndDateTxt = getString(R.string.txtDateEndFrmt, year,month,day);
                 mChooseEndDate.setText(mEndDateTxt);
                 GregorianCalendar gregorianCalendar = new GregorianCalendar();
-                gregorianCalendar.set(i, i1, i2);
+                gregorianCalendar.set(year,month,day);
                 mEndDate = gregorianCalendar.getTimeInMillis();
                 calendarView.setVisibility(View.GONE);
             }
@@ -85,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (mStartDate > mEndDate){
                     Toast.makeText(MainActivity.this, "Ошибка", Toast.LENGTH_LONG).show();
-                    mChooseStartDate.setText("Дата-время старта задачи:");
-                    mChooseEndDate.setText("Дата-время окончания задачи:");
+                    mChooseStartDate.setText(getString(R.string.txtDateStart));
+                    mChooseEndDate.setText(getString(R.string.txtDateEnd));
                 } else {
-                    Toast.makeText(MainActivity.this, "старт: " + mStartDateTxt + " окончаниe: " + mEndDateTxt, Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, mStartDateTxt + " " + mEndDateTxt, Toast.LENGTH_LONG).show();
                 }
             }
         });

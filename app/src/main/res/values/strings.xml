@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Сроки задачи</string>
     <string name="txtDateStart">Дата-время старта задачи:</string>
+    <string name="txtDateStartFrmt">Дата-время старта задачи: %d-%d-%d</string>
     <string name="txtDateEnd">Дата-время окончания задачи:</string>
+    <string name="txtDateEndFrmt">Дата-время окончания задачи: %d-%d-%d</string>
     <string name="ok">OK</string>
+    <string name="txtStart">старт:</string>
 </resources>
